@@ -199,8 +199,8 @@
                     <body>
                         <!-- Part A -->
                         <div class="box">
-                            <title>This is the demo area for Rely.
-                            </title>
+                            <h1>This is the demo area for Rely.
+                            </h1>
                             <p>This is a demo area that demonstrates the workflow of using our platform rely. This will take you through a simulation of contract creation and natural language understanding, which makes contract creation easier. once the user inputs their contracts in a natural way, the program will create a more legally worded and formal contract, and a smart Econtract that rely uses. Then, specific milestones are derived from the contract, and release conditions defined. After the milestones are defined, then customers and contractors can vote on whether to release funds to contractors or not. </p>
                         </div>
                         <div class="box">
@@ -370,15 +370,20 @@
             } else if (votes.contractor === 'disagree' && votes.customer === 'disagree') {
                 resultElement.innerText = "Funds refunded to customer, contract terminated.";
             } else if (votes.contractor !== votes.customer) {
-                if (votes.admin === 'agree') {
+                if (votes.admin === 'agree'&& votes.contractor === 'agree' && votes.customer === 'disagree') {
                     resultElement.innerText = "Funds released to contractor, contract successful.";
-                } else if (votes.admin === 'disagree') {
+                } else if (votes.admin === 'disagree'&& votes.contractor === 'agree' && votes.customer === 'disagree') {
                     resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                } else if (votes.admin === 'agree' &&votes.contractor === 'disagree' &&votes.customer === 'agree') {
+                    resultElement.innerText = "Funds released to contractor, contract successful.";
+                } else if (votes.admin === 'disagree' &&votes.contractor === 'disagree' &&votes.customer === 'agree') {
+                    resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                }
                 } else {
                     resultElement.innerText = "Waiting for admin votes.";
                 }
             }
-        }
+        
 
         function resetVotes() {
             votes = { contractor: null, customer: null, admin: null };
