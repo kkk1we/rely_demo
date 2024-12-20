@@ -180,6 +180,10 @@
                                 background-color: green;
                                 color: white;
                             }
+                            .button.disagree {
+                                background-color: red;
+                                color: white;
+                            }
                             .hidden {
                                 display: none;
                             }
@@ -190,6 +194,7 @@
                             }
                             .voting-buttons {
                                 display: flex;
+                                justify-content: center;
                                 gap: 10px;
                             }
                         </style>
@@ -207,18 +212,7 @@
                             <div class="box-title">Clearer and More Formal Contract</div>
                             <div class="scroll-box">
                                 <p>Clause:
-                                The Contractor agrees to construct a pavement for the well located at [X Address], in accordance with the agreed-upon specifications, and to complete the work no later than [Y Deadline]. The construction shall adhere to the following quality standards and metrics:
-                    
-                                Metric of Quality:
-                                The pavement must meet the following criteria:
-                    
-                                Durability: The pavement shall be constructed using materials that conform to [relevant local building codes or ASTM standards, e.g., ASTM C33 for aggregates]. The surface must withstand a minimum compressive strength of [specific value, e.g., 30 MPa (megapascals)] at 28 days.
-                                Surface Evenness: Variations in the surface level shall not exceed [e.g., 5 mm over a 2-meter span] when measured with a straightedge.
-                                Drainage: The pavement shall allow for proper drainage, with a slope of [specific percentage, e.g., 1-2%] away from the well to prevent water pooling.
-                                Workmanship: All joints and edges must be smooth and free from visible cracks, chips, or irregularities.
-                                Longevity: The pavement must maintain its integrity and functionality for a minimum period of [e.g., 5 years] under normal use conditions.
-                                Inspection and Approval:
-                                Upon completion, the pavement will be inspected by the Customer or a designated third-party inspector to ensure compliance with the above metrics. The Contractor agrees to rectify any deficiencies at no additional cost if the pavement fails to meet these standards.</p>
+                                The Contractor agrees to construct a pavement for the well located at [X Address], in accordance with the agreed-upon specifications, and to complete the work no later than [Y Deadline]. The construction shall adhere to the following quality standards and metrics:</p>
                             </div>
                             <button class="button" onclick="showPartC()">Create Smart Contract</button>
                         </div>
@@ -227,15 +221,9 @@
                         <div class="box hidden" id="partC">
                             <div class="box-title">Horizontal Scroll Sections</div>
                             <div class="horizontal-scroll">
-                                <div class="horizontal-item">1. Site Preparation<br>Task: Clear and level the area around the well.<br>Details: Remove debris, rocks, or vegetation.<br>Deadline: 2 days<br>Estimated Cost: $200</div>
-                                <div class="horizontal-item">2. Design and Planning<br>Task: Finalize the design and dimensions of the pavement.<br>Details: Measure the area around the well.<br>Deadline: 3 days<br>Estimated Cost: $150</div>
-                                <div class="horizontal-item">3. Material Procurement<br>Task: Purchase materials for the pavement construction.<br>Details: Source materials such as concrete mix.<br>Deadline: 4 days<br>Estimated Cost: $1,000</div>
-                                <div class="horizontal-item">4. Groundwork and Foundation<br>Task: Prepare the foundation for the pavement.<br>Details: Excavate the area to a suitable depth.<br>Deadline: 3 days<br>Estimated Cost: $400</div>
-                                <div class="horizontal-item">5. Formwork Installation<br>Task: Set up formwork to define the pavement boundaries.<br>Deadline: 2 days<br>Estimated Cost: $250</div>
-                                <div class="horizontal-item">6. Pouring and Laying Pavement<br>Task: Construct the pavement surface.<br>Deadline: 4 days<br>Estimated Cost: $1,500</div>
-                                <div class="horizontal-item">7. Curing<br>Task: Allow the pavement to cure properly.<br>Deadline: 7 days<br>Estimated Cost: $100</div>
-                                <div class="horizontal-item">8. Cleanup and Finishing<br>Task: Finalize the project.<br>Deadline: 1 day<br>Estimated Cost: $100</div>
-                                <div class="horizontal-item">9. Inspection and Handover<br>Task: Verify project completion and hand over the site.<br>Deadline: 1 day<br>Estimated Cost: $50</div>
+                                <div class="horizontal-item">1. Site Preparation<br>Task: Clear and level the area.<br>Deadline: 2 days<br>Estimated Cost: $200</div>
+                                <div class="horizontal-item">2. Design and Planning<br>Task: Finalize design.<br>Deadline: 3 days<br>Estimated Cost: $150</div>
+                                <div class="horizontal-item">3. Material Procurement<br>Deadline: 4 days<br>Estimated Cost: $1,000</div>
                             </div>
                             <button class="button" onclick="showPartD()">Create Milestone Contract</button>
                         </div>
@@ -261,41 +249,6 @@
                                         <td>Design and Planning</td>
                                         <td>3 days</td>
                                         <td>$150</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Material Procurement</td>
-                                        <td>4 days</td>
-                                        <td>$1,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Groundwork and Foundation</td>
-                                        <td>3 days</td>
-                                        <td>$400</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Formwork Installation</td>
-                                        <td>2 days</td>
-                                        <td>$250</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Pouring and Laying Pavement</td>
-                                        <td>4 days</td>
-                                        <td>$1,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Curing</td>
-                                        <td>7 days</td>
-                                        <td>$100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cleanup and Finishing</td>
-                                        <td>1 day</td>
-                                        <td>$100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Inspection and Handover</td>
-                                        <td>1 day</td>
-                                        <td>$50</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -348,49 +301,46 @@
                             }
                     
                             function showVotingSection() {
-                                const milestones = [
-                                    "Site Preparation",
-                                    "Design and Planning",
-                                    "Material Procurement",
-                                    "Groundwork and Foundation",
-                                    "Formwork Installation",
-                                    "Pouring and Laying Pavement",
-                                    "Curing",
-                                    "Cleanup and Finishing",
-                                    "Inspection and Handover"
-                                ];
-                                const randomMilestone = milestones[Math.floor(Math.random() * milestones.length)];
-                                document.getElementById('randomMilestone').innerText = randomMilestone;
                                 document.getElementById('votingSection').classList.remove('hidden');
                             }
                     
                             function castVote(role, decision) {
                                 votes[role] = decision;
-                                document.getElementById(`${role}-${decision}`).classList.add('active');
-                                document.getElementById(`${role}-${decision === 'agree' ? 'disagree' : 'agree'}`).classList.remove('active');
+                    
+                                const agreeButton = document.getElementById(`${role}-agree`);
+                                const disagreeButton = document.getElementById(`${role}-disagree`);
+                    
+                                if (decision === 'agree') {
+                                    agreeButton.classList.add('active');
+                                    disagreeButton.classList.remove('disagree');
+                                } else {
+                                    disagreeButton.classList.add('disagree');
+                                    agreeButton.classList.remove('active');
+                                }
+                    
                                 evaluateVotes();
                             }
                     
                             function evaluateVotes() {
-                                const resultElement = document.getElementById('votingResult');
+                                const result = document.getElementById('votingResult');
                                 if (votes.contractor === 'agree' && votes.customer === 'agree') {
-                                    resultElement.innerText = "Funds released to contractor, contract successful.";
+                                    result.innerText = "Funds released to contractor, contract successful.";
                                 } else if (votes.contractor === 'disagree' && votes.customer === 'disagree') {
-                                    resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                                    result.innerText = "Funds refunded to customer, contract terminated.";
                                 } else if (votes.contractor !== votes.customer) {
                                     if (votes.admin === 'agree') {
-                                        resultElement.innerText = "Funds released to contractor, contract successful.";
+                                        result.innerText = "Funds released to contractor, contract successful.";
                                     } else if (votes.admin === 'disagree') {
-                                        resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                                        result.innerText = "Funds refunded to customer, contract terminated.";
                                     } else {
-                                        resultElement.innerText = "Waiting for admin votes.";
+                                        result.innerText = "Waiting for admin votes.";
                                     }
                                 }
                             }
                     
                             function resetVotes() {
                                 votes = { contractor: null, customer: null, admin: null };
-                                document.querySelectorAll('.button').forEach(button => button.classList.remove('active'));
+                                document.querySelectorAll('.button').forEach(button => button.classList.remove('active', 'disagree'));
                                 document.getElementById('votingResult').innerText = "";
                             }
                         </script>
