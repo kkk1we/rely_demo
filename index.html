@@ -187,86 +187,55 @@
                                 display: flex;
                                 flex-direction: column;
                                 gap: 10px;
-                                align-items: center;
                             }
                             .voting-buttons {
                                 display: flex;
-                                justify-content: center;
                                 gap: 10px;
-                            }
-                            .center {
-                                text-align: center;
-                            }
-                            #intro-section {
-                                margin-bottom: 30px;
-                                padding: 20px;
-                                background-color: #f0f8ff;
-                                border: 1px solid #cce7ff;
-                                border-radius: 5px;
-                            }
-                            #intro-section h1 {
-                                font-size: 24px;
-                                color: #2d7ce6;
-                            }
-                            #intro-section p {
-                                font-size: 16px;
-                                line-height: 1.6;
                             }
                         </style>
                     </head>
                     <body>
-                        <!-- Intro Section -->
-                        <div id="intro-section" class="center">
-                            <h1>Demo Area</h1>
-                            <p>
-                                This is a demo area that demonstrates the workflow of using our platform. This will take you through a simulation of contract creation and natural language understanding, which makes contract creation easier. Once the user inputs their contracts in a natural way, the program will create a more legally worded and formal contract, and a smart e-contract that relies on these inputs. Then, specific milestones are derived from the contract, and release conditions defined. After the milestones are defined, customers and contractors can vote on whether to release funds to contractors or not.
-                            </p>
-                        </div>
-                    
                         <!-- Part A -->
                         <div class="box">
                             <div class="box-title">Convert Layman Terms into Stricter and More Legally Binding Contracts</div>
                             <p>Customer wants contractor to build a pavement around a well for customer, at X address by Y deadline, ensuring quality using some quantitative metric.</p>
-                            <div class="center">
-                                <button class="button" onclick="showPartB()">Create Formal Contract</button>
-                            </div>
+                            <button class="button" onclick="showPartB()">Create Formal Contract</button>
                         </div>
                     
                         <!-- Part B -->
                         <div class="box hidden" id="partB">
                             <div class="box-title">Clearer and More Formal Contract</div>
                             <div class="scroll-box">
-                                <p>
-                                    Clause: The Contractor agrees to construct a pavement for the well located at [X Address], in accordance with the agreed-upon specifications, and to complete the work no later than [Y Deadline].
-                                    <br><br>
-                                    Metric of Quality: 
-                                    <ul>
-                                        <li>Durability: The pavement must meet minimum compressive strength standards.</li>
-                                        <li>Surface Evenness: Variations shall not exceed 5 mm over a 2-meter span.</li>
-                                        <li>Drainage: A slope of 1-2% away from the well must be ensured.</li>
-                                        <li>Workmanship: All edges must be smooth and free from cracks.</li>
-                                        <li>Longevity: Maintain integrity for at least 5 years.</li>
-                                    </ul>
-                                    Inspection and Approval: Upon completion, the pavement will be inspected to ensure compliance.
-                                </p>
+                                <p>Clause:
+                                The Contractor agrees to construct a pavement for the well located at [X Address], in accordance with the agreed-upon specifications, and to complete the work no later than [Y Deadline]. The construction shall adhere to the following quality standards and metrics:
+                    
+                                Metric of Quality:
+                                The pavement must meet the following criteria:
+                    
+                                Durability: The pavement shall be constructed using materials that conform to [relevant local building codes or ASTM standards, e.g., ASTM C33 for aggregates]. The surface must withstand a minimum compressive strength of [specific value, e.g., 30 MPa (megapascals)] at 28 days.
+                                Surface Evenness: Variations in the surface level shall not exceed [e.g., 5 mm over a 2-meter span] when measured with a straightedge.
+                                Drainage: The pavement shall allow for proper drainage, with a slope of [specific percentage, e.g., 1-2%] away from the well to prevent water pooling.
+                                Workmanship: All joints and edges must be smooth and free from visible cracks, chips, or irregularities.
+                                Longevity: The pavement must maintain its integrity and functionality for a minimum period of [e.g., 5 years] under normal use conditions.
+                                Inspection and Approval:
+                                Upon completion, the pavement will be inspected by the Customer or a designated third-party inspector to ensure compliance with the above metrics. The Contractor agrees to rectify any deficiencies at no additional cost if the pavement fails to meet these standards.</p>
                             </div>
-                            <div class="center">
-                                <button class="button" onclick="showPartC()">Create Smart Contract</button>
-                            </div>
+                            <button class="button" onclick="showPartC()">Create Smart Contract</button>
                         </div>
                     
                         <!-- Part C -->
                         <div class="box hidden" id="partC">
                             <div class="box-title">Horizontal Scroll Sections</div>
                             <div class="horizontal-scroll">
-                                <div class="horizontal-item">1. Site Preparation<br>Deadline: 2 days<br>Estimated Cost: $200</div>
-                                <div class="horizontal-item">2. Design and Planning<br>Deadline: 3 days<br>Estimated Cost: $150</div>
-                                <div class="horizontal-item">3. Material Procurement<br>Deadline: 4 days<br>Estimated Cost: $1,000</div>
-                                <div class="horizontal-item">4. Groundwork and Foundation<br>Deadline: 3 days<br>Estimated Cost: $400</div>
+                                <div class="horizontal-item">1. Site Preparation<br>Task: Clear and level the area around the well.<br>Details: Remove debris, rocks, or vegetation.<br>Deadline: 2 days<br>Estimated Cost: $200</div>
+                                <div class="horizontal-item">2. Design and Planning<br>Task: Finalize the design and dimensions of the pavement.<br>Details: Measure the area around the well.<br>Deadline: 3 days<br>Estimated Cost: $150</div>
+                                <div class="horizontal-item">3. Material Procurement<br>Task: Purchase materials for the pavement construction.<br>Details: Source materials such as concrete mix.<br>Deadline: 4 days<br>Estimated Cost: $1,000</div>
+                                <div class="horizontal-item">4. Groundwork and Foundation<br>Task: Prepare the foundation for the pavement.<br>Details: Excavate the area to a suitable depth.<br>Deadline: 3 days<br>Estimated Cost: $400</div>
+                                <div class="horizontal-item">5. Formwork Installation<br>Task: Set up formwork to define the pavement boundaries.<br>Deadline: 2 days<br>Estimated Cost: $250</div>
+                                <div class="horizontal-item">6. Pouring and Laying Pavement<br>Task: Construct the pavement surface.<br>Deadline: 4 days<br>Estimated Cost: $1,500</div>
+                                <div class="horizontal-item">7. Curing<br>Task: Allow the pavement to cure properly.<br>Deadline: 7 days<br>Estimated Cost: $100</div>
                             </div>
-                            <div class="center">
-                                <button class="button" onclick="showPartD()">Create Milestone Contract</button>
-                            </div>
+                            <button class="button" onclick="showPartD()">Create Milestone Contract</button>
                         </div>
                     
                         <!-- Part D -->
@@ -291,11 +260,34 @@
                                         <td>3 days</td>
                                         <td>$150</td>
                                     </tr>
+                                    <tr>
+                                        <td>Material Procurement</td>
+                                        <td>4 days</td>
+                                        <td>$1,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Groundwork and Foundation</td>
+                                        <td>3 days</td>
+                                        <td>$400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Formwork Installation</td>
+                                        <td>2 days</td>
+                                        <td>$250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pouring and Laying Pavement</td>
+                                        <td>4 days</td>
+                                        <td>$1,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Curing</td>
+                                        <td>7 days</td>
+                                        <td>$100</td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="center">
-                                <button class="button" onclick="showVotingSection()">Vote to Release Funds</button>
-                            </div>
+                            <button class="button" onclick="showVotingSection()">Vote to Release Funds</button>
                         </div>
                     
                         <!-- Voting Section -->
@@ -316,15 +308,20 @@
                                         <button class="button" id="customer-disagree" onclick="castVote('customer', 'disagree')">Disagree</button>
                                     </div>
                                 </div>
+                                <div>
+                                    <strong>Admin:</strong>
+                                    <div class="voting-buttons">
+                                        <button class="button" id="admin-agree" onclick="castVote('admin', 'agree')">Agree</button>
+                                        <button class="button" id="admin-disagree" onclick="castVote('admin', 'disagree')">Disagree</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="center">
-                                <button class="button" onclick="resetVotes()">Reset Votes</button>
-                            </div>
+                            <button class="button" onclick="resetVotes()">Reset Votes</button>
                             <div id="votingResult" style="margin-top: 20px; font-weight: bold;"></div>
                         </div>
                     
                         <script>
-                            let votes = { contractor: null, customer: null };
+                            let votes = { contractor: null, customer: null, admin: null };
                     
                             function showPartB() {
                                 document.getElementById('partB').classList.remove('hidden');
@@ -339,6 +336,17 @@
                             }
                     
                             function showVotingSection() {
+                                const milestones = [
+                                    "Site Preparation",
+                                    "Design and Planning",
+                                    "Material Procurement",
+                                    "Groundwork and Foundation",
+                                    "Formwork Installation",
+                                    "Pouring and Laying Pavement",
+                                    "Curing"
+                                ];
+                                const randomMilestone = milestones[Math.floor(Math.random() * milestones.length)];
+                                document.getElementById('randomMilestone').innerText = randomMilestone;
                                 document.getElementById('votingSection').classList.remove('hidden');
                             }
                     
@@ -349,25 +357,31 @@
                                 evaluateVotes();
                             }
                     
-                            function evaluateVotes() {
-                                const resultElement = document.getElementById('votingResult');
-                                if (votes.contractor === 'agree' && votes.customer === 'agree') {
-                                    resultElement.innerText = "Funds released to contractor, contract successful.";
-                                } else if (votes.contractor === 'disagree' && votes.customer === 'disagree') {
-                                    resultElement.innerText = "Funds refunded to customer, contract terminated.";
-                                } else {
-                                    resultElement.innerText = "Votes are incomplete. Waiting for agreement.";
-                                }
-                            }
-                    
-                            function resetVotes() {
-                                votes = { contractor: null, customer: null };
-                                document.querySelectorAll('.button').forEach(button => button.classList.remove('active'));
-                                document.getElementById('votingResult').innerText = "";
-                            }
-                        </script>
-                    </body>
-                    </html>
+                            function evaluateVotes() {            const resultElement = document.getElementById('votingResult');
+            if (votes.contractor === 'agree' && votes.customer === 'agree') {
+                resultElement.innerText = "Funds released to contractor, contract successful.";
+            } else if (votes.contractor === 'disagree' && votes.customer === 'disagree') {
+                resultElement.innerText = "Funds refunded to customer, contract terminated.";
+            } else if (votes.contractor !== votes.customer) {
+                if (votes.admin === 'agree') {
+                    resultElement.innerText = "Funds released to contractor, contract successful.";
+                } else if (votes.admin === 'disagree') {
+                    resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                } else {
+                    resultElement.innerText = "Waiting for admin votes.";
+                }
+            }
+        }
+
+        function resetVotes() {
+            votes = { contractor: null, customer: null, admin: null };
+            document.querySelectorAll('.button').forEach(button => button.classList.remove('active'));
+            document.getElementById('votingResult').innerText = "";
+        }
+    </script>
+</body>
+</html>
+
                     
             </div>
             <div class="row">
