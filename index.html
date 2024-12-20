@@ -168,16 +168,29 @@
                                 margin-top: 10px;
                                 border: none;
                                 border-radius: 5px;
-                                background-color: #007bff;
-                                color: #fff;
+                                background-color: white;
+                                color: #2d7ce6;
                                 cursor: pointer;
                                 text-align: center;
                             }
                             .button:hover {
-                                background-color: #0056b3;
+                                background-color: #e0e0e0;
+                            }
+                            .button.active {
+                                background-color: green;
+                                color: white;
                             }
                             .hidden {
                                 display: none;
+                            }
+                            .voting-section {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+                            }
+                            .voting-buttons {
+                                display: flex;
+                                gap: 10px;
                             }
                         </style>
                     </head>
@@ -292,24 +305,36 @@
                         <!-- Voting Section -->
                         <div class="box hidden" id="votingSection">
                             <div class="box-title">Votes to Release Funds for: <span id="randomMilestone"></span></div>
-                            <div>
-                                <strong>Contractor:</strong>
-                                <button class="button" onclick="vote('contractor', 'agree')">Agree</button>
-                                <button class="button" onclick="vote('contractor', 'disagree')">Disagree</button>
+                            <div class="voting-section">
+                                <div>
+                                    <strong>Contractor:</strong>
+                                    <div class="voting-buttons">
+                                        <button class="button" id="contractor-agree" onclick="castVote('contractor', 'agree')">Agree</button>
+                                        <button class="button" id="contractor-disagree" onclick="castVote('contractor', 'disagree')">Disagree</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong>Customer:</strong>
+                                    <div class="voting-buttons">
+                                        <button class="button" id="customer-agree" onclick="castVote('customer', 'agree')">Agree</button>
+                                        <button class="button" id="customer-disagree" onclick="castVote('customer', 'disagree')">Disagree</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong>Admin:</strong>
+                                    <div class="voting-buttons">
+                                        <button class="button" id="admin-agree" onclick="castVote('admin', 'agree')">Agree</button>
+                                        <button class="button" id="admin-disagree" onclick="castVote('admin', 'disagree')">Disagree</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <strong>Customer:</strong>
-                                <button class="button" onclick="vote('customer', 'agree')">Agree</button>
-                                <button class="button" onclick="vote('customer', 'disagree')">Disagree</button>
-                            </div>
-                            <div>
-                                <strong>Admin:</strong>
-                                <button class="button" onclick="vote('admin', 'agree')">Agree</button>
-                                <button class="button" onclick="vote('admin', 'disagree')">Disagree</button>
-                            </div>
+                            <button class="button" onclick="resetVotes()">Reset Votes</button>
+                            <div id="votingResult" style="margin-top: 20px; font-weight: bold;"></div>
                         </div>
                     
                         <script>
+                            let votes = { contractor: null, customer: null, admin: null };
+                    
                             function showPartB() {
                                 document.getElementById('partB').classList.remove('hidden');
                             }
@@ -339,8 +364,34 @@
                                 document.getElementById('votingSection').classList.remove('hidden');
                             }
                     
-                            function vote(role, decision) {
-                                alert(`${role} has voted to ${decision}`);
+                            function castVote(role, decision) {
+                                votes[role] = decision;
+                                document.getElementById(`${role}-${decision}`).classList.add('active');
+                                document.getElementById(`${role}-${decision === 'agree' ? 'disagree' : 'agree'}`).classList.remove('active');
+                                evaluateVotes();
+                            }
+                    
+                            function evaluateVotes() {
+                                const resultElement = document.getElementById('votingResult');
+                                if (votes.contractor === 'agree' && votes.customer === 'agree') {
+                                    resultElement.innerText = "Funds released to contractor, contract successful.";
+                                } else if (votes.contractor === 'disagree' && votes.customer === 'disagree') {
+                                    resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                                } else if (votes.contractor !== votes.customer) {
+                                    if (votes.admin === 'agree') {
+                                        resultElement.innerText = "Funds released to contractor, contract successful.";
+                                    } else if (votes.admin === 'disagree') {
+                                        resultElement.innerText = "Funds refunded to customer, contract terminated.";
+                                    } else {
+                                        resultElement.innerText = "Waiting for admin votes.";
+                                    }
+                                }
+                            }
+                    
+                            function resetVotes() {
+                                votes = { contractor: null, customer: null, admin: null };
+                                document.querySelectorAll('.button').forEach(button => button.classList.remove('active'));
+                                document.getElementById('votingResult').innerText = "";
                             }
                         </script>
                     </body>
