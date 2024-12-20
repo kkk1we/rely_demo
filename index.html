@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
+    <title>Rely</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=dfc8e16299c42b4c396dc496d498492a">
     <link rel="stylesheet" href="assets/css/Kaushan%20Script.css?h=36ee1b5847264d6167410549baac02f6">
     <link rel="stylesheet" href="assets/css/Montserrat.css?h=b6153c7c0051e30da72cf6821d85bf15">
@@ -115,127 +115,237 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center"><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .party {
-            margin: 20px;
-        }
-        button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            background-color: #f0f0f0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button.clicked {
-            background-color: green;
-            color: white;
-        }
-        #result {
-            margin-top: 30px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        #reset {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #reset:hover {
-            background-color: #e60000;
-        }
-    </style>
-</head>
-<body>
-    <h1>Security Platform Demo</h1>
-    <h2>This platform demonstrates, albeit in a very basic manner, the mechanics of fund release.</h2>
-
-    <div class="party">
-        <h2>Party A (45%)</h2>
-        <button onclick="vote('PartyA', 'agree', this)">Agree</button>
-        <button onclick="vote('PartyA', 'disagree', this)">Disagree</button>
-    </div>
-
-    <div class="party">
-        <h2>Party B (45%)</h2>
-        <button onclick="vote('PartyB', 'agree', this)">Agree</button>
-        <button onclick="vote('PartyB', 'disagree', this)">Disagree</button>
-    </div>
-
-    <div class="party">
-        <h2>Admin (10%)</h2>
-        <button onclick="vote('Admin', 'agree', this)">Agree</button>
-        <button onclick="vote('Admin', 'disagree', this)">Disagree</button>
-    </div>
-
-    <div id="result">Waiting for votes...</div>
-
-    <button id="reset" onclick="resetVotes()">Reset</button>
-
-    <script>
-        const votes = {
-            PartyA: null,
-            PartyB: null,
-            Admin: null
-        };
-
-        function vote(party, decision, button) {
-            votes[party] = decision;
-            document.querySelectorAll(`.party button`).forEach(btn => {
-                if (btn !== button && btn.parentNode.parentNode.contains(button)) {
-                    btn.classList.remove('clicked');
-                }
-            });
-            button.classList.add('clicked');
-            evaluateVotes();
-        }
-
-        function evaluateVotes() {
-            const { PartyA, PartyB, Admin } = votes;
-
-            if (PartyA && PartyB) {
-                if (PartyA === 'agree' && PartyB === 'agree') {
-                    document.getElementById('result').innerText = 'Funds Released';
-                } else if (PartyA === 'disagree' && PartyB === 'disagree') {
-                    document.getElementById('result').innerText = 'Funds Refunded';
-                } else {
-                    if (Admin) {
-                        document.getElementById('result').innerText = Admin === 'agree' ? 'Funds Released' : 'Funds Refunded';
-                    } else {
-                        document.getElementById('result').innerText = 'Waiting for Admin vote...';
-                    }
-                }
-            } else {
-                document.getElementById('result').innerText = 'Waiting for Party A and Party B votes...';
-            }
-        }
-
-        function resetVotes() {
-            for (let party in votes) {
-                votes[party] = null;
-            }
-            document.getElementById('result').innerText = 'Waiting for votes...';
-            document.querySelectorAll('button').forEach(button => button.classList.remove('clicked'));
-        }
-    </script>
-</body>
-</html>
-</div>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Formal Contract Creator</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                margin: 20px;
+                            }
+                            .box {
+                                border: 1px solid #ccc;
+                                padding: 20px;
+                                margin-bottom: 20px;
+                                border-radius: 5px;
+                                background-color: #f9f9f9;
+                            }
+                            .box-title {
+                                font-weight: bold;
+                                margin-bottom: 10px;
+                                font-size: 18px;
+                            }
+                            .scroll-box {
+                                max-height: 200px;
+                                overflow-y: auto;
+                                padding: 10px;
+                                background-color: #fff;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                            }
+                            .horizontal-scroll {
+                                display: flex;
+                                overflow-x: auto;
+                                gap: 20px;
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                background-color: #f9f9f9;
+                            }
+                            .horizontal-item {
+                                min-width: 300px;
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                background-color: #fff;
+                            }
+                            .button {
+                                display: inline-block;
+                                padding: 10px 20px;
+                                margin-top: 10px;
+                                border: none;
+                                border-radius: 5px;
+                                background-color: #007bff;
+                                color: #fff;
+                                cursor: pointer;
+                                text-align: center;
+                            }
+                            .button:hover {
+                                background-color: #0056b3;
+                            }
+                            .hidden {
+                                display: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <!-- Part A -->
+                        <div class="box">
+                            <div class="box-title">Convert Layman Terms into Stricter and More Legally Binding Contracts</div>
+                            <p>Customer wants contractor to build a pavement around a well for customer, at X address by Y deadline, ensuring quality using some quantitative metric.</p>
+                            <button class="button" onclick="showPartB()">Create Formal Contract</button>
+                        </div>
+                    
+                        <!-- Part B -->
+                        <div class="box hidden" id="partB">
+                            <div class="box-title">Clearer and More Formal Contract</div>
+                            <div class="scroll-box">
+                                <p>Clause:
+                                The Contractor agrees to construct a pavement for the well located at [X Address], in accordance with the agreed-upon specifications, and to complete the work no later than [Y Deadline]. The construction shall adhere to the following quality standards and metrics:
+                    
+                                Metric of Quality:
+                                The pavement must meet the following criteria:
+                    
+                                Durability: The pavement shall be constructed using materials that conform to [relevant local building codes or ASTM standards, e.g., ASTM C33 for aggregates]. The surface must withstand a minimum compressive strength of [specific value, e.g., 30 MPa (megapascals)] at 28 days.
+                                Surface Evenness: Variations in the surface level shall not exceed [e.g., 5 mm over a 2-meter span] when measured with a straightedge.
+                                Drainage: The pavement shall allow for proper drainage, with a slope of [specific percentage, e.g., 1-2%] away from the well to prevent water pooling.
+                                Workmanship: All joints and edges must be smooth and free from visible cracks, chips, or irregularities.
+                                Longevity: The pavement must maintain its integrity and functionality for a minimum period of [e.g., 5 years] under normal use conditions.
+                                Inspection and Approval:
+                                Upon completion, the pavement will be inspected by the Customer or a designated third-party inspector to ensure compliance with the above metrics. The Contractor agrees to rectify any deficiencies at no additional cost if the pavement fails to meet these standards.</p>
+                            </div>
+                            <button class="button" onclick="showPartC()">Create Smart Contract</button>
+                        </div>
+                    
+                        <!-- Part C -->
+                        <div class="box hidden" id="partC">
+                            <div class="box-title">Horizontal Scroll Sections</div>
+                            <div class="horizontal-scroll">
+                                <div class="horizontal-item">1. Site Preparation<br>Task: Clear and level the area around the well.<br>Details: Remove debris, rocks, or vegetation.<br>Deadline: 2 days<br>Estimated Cost: $200</div>
+                                <div class="horizontal-item">2. Design and Planning<br>Task: Finalize the design and dimensions of the pavement.<br>Details: Measure the area around the well.<br>Deadline: 3 days<br>Estimated Cost: $150</div>
+                                <div class="horizontal-item">3. Material Procurement<br>Task: Purchase materials for the pavement construction.<br>Details: Source materials such as concrete mix.<br>Deadline: 4 days<br>Estimated Cost: $1,000</div>
+                                <div class="horizontal-item">4. Groundwork and Foundation<br>Task: Prepare the foundation for the pavement.<br>Details: Excavate the area to a suitable depth.<br>Deadline: 3 days<br>Estimated Cost: $400</div>
+                                <div class="horizontal-item">5. Formwork Installation<br>Task: Set up formwork to define the pavement boundaries.<br>Deadline: 2 days<br>Estimated Cost: $250</div>
+                                <div class="horizontal-item">6. Pouring and Laying Pavement<br>Task: Construct the pavement surface.<br>Deadline: 4 days<br>Estimated Cost: $1,500</div>
+                                <div class="horizontal-item">7. Curing<br>Task: Allow the pavement to cure properly.<br>Deadline: 7 days<br>Estimated Cost: $100</div>
+                                <div class="horizontal-item">8. Cleanup and Finishing<br>Task: Finalize the project.<br>Deadline: 1 day<br>Estimated Cost: $100</div>
+                                <div class="horizontal-item">9. Inspection and Handover<br>Task: Verify project completion and hand over the site.<br>Deadline: 1 day<br>Estimated Cost: $50</div>
+                            </div>
+                            <button class="button" onclick="showPartD()">Create Milestone Contract</button>
+                        </div>
+                    
+                        <!-- Part D -->
+                        <div class="box hidden" id="partD">
+                            <div class="box-title">Milestones for Building Pavement for a Well</div>
+                            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Milestone</th>
+                                        <th>Deadline</th>
+                                        <th>Estimated Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Site Preparation</td>
+                                        <td>2 days</td>
+                                        <td>$200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Design and Planning</td>
+                                        <td>3 days</td>
+                                        <td>$150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Material Procurement</td>
+                                        <td>4 days</td>
+                                        <td>$1,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Groundwork and Foundation</td>
+                                        <td>3 days</td>
+                                        <td>$400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Formwork Installation</td>
+                                        <td>2 days</td>
+                                        <td>$250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pouring and Laying Pavement</td>
+                                        <td>4 days</td>
+                                        <td>$1,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Curing</td>
+                                        <td>7 days</td>
+                                        <td>$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cleanup and Finishing</td>
+                                        <td>1 day</td>
+                                        <td>$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inspection and Handover</td>
+                                        <td>1 day</td>
+                                        <td>$50</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="button" onclick="showVotingSection()">Vote to Release Funds</button>
+                        </div>
+                    
+                        <!-- Voting Section -->
+                        <div class="box hidden" id="votingSection">
+                            <div class="box-title">Votes to Release Funds for: <span id="randomMilestone"></span></div>
+                            <div>
+                                <strong>Contractor:</strong>
+                                <button class="button" onclick="vote('contractor', 'agree')">Agree</button>
+                                <button class="button" onclick="vote('contractor', 'disagree')">Disagree</button>
+                            </div>
+                            <div>
+                                <strong>Customer:</strong>
+                                <button class="button" onclick="vote('customer', 'agree')">Agree</button>
+                                <button class="button" onclick="vote('customer', 'disagree')">Disagree</button>
+                            </div>
+                            <div>
+                                <strong>Admin:</strong>
+                                <button class="button" onclick="vote('admin', 'agree')">Agree</button>
+                                <button class="button" onclick="vote('admin', 'disagree')">Disagree</button>
+                            </div>
+                        </div>
+                    
+                        <script>
+                            function showPartB() {
+                                document.getElementById('partB').classList.remove('hidden');
+                            }
+                    
+                            function showPartC() {
+                                document.getElementById('partC').classList.remove('hidden');
+                            }
+                    
+                            function showPartD() {
+                                document.getElementById('partD').classList.remove('hidden');
+                            }
+                    
+                            function showVotingSection() {
+                                const milestones = [
+                                    "Site Preparation",
+                                    "Design and Planning",
+                                    "Material Procurement",
+                                    "Groundwork and Foundation",
+                                    "Formwork Installation",
+                                    "Pouring and Laying Pavement",
+                                    "Curing",
+                                    "Cleanup and Finishing",
+                                    "Inspection and Handover"
+                                ];
+                                const randomMilestone = milestones[Math.floor(Math.random() * milestones.length)];
+                                document.getElementById('randomMilestone').innerText = randomMilestone;
+                                document.getElementById('votingSection').classList.remove('hidden');
+                            }
+                    
+                            function vote(role, decision) {
+                                alert(`${role} has voted to ${decision}`);
+                            }
+                        </script>
+                    </body>
+                    </html>
+                    
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal6" data-bs-toggle="modal"></a></div>
